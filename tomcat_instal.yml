@@ -1,0 +1,37 @@
+---
+- name: test playbook tomcat
+  hosts: all
+  become: true
+  tasks:
+    - name: java installation
+      yum:
+        name: java
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: java installation
+      yum:
+        name: java
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: download tomcat
+      get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.83/bin/apache-tomcat-8.5.83.tar.gz
+        dest: /opt
+
+    - name: extracting tomcatfile
+      unarchive: 
+        src: /opt/apache-tomcat-8.5.83.tar.gz
+        dest: /opt
+        remote_src: yes
+
+    - name: permissions for the file
+      file:
+        path: /opt/apache-tomcat-8.5.83
+        mode: 0777
+
+    - name: installing tomcat
+      shell: nohup ./startup.sh
+      args: 
+        chdir: /opt/apache-tomcat-8.5.83/bin/

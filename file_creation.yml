@@ -1,0 +1,9 @@
+---
+- name: file creation
+  hosts: server
+  become: true
+  tasks:
+    - name: file creation
+      file:
+        path: /home/admin/demofile.txt
+        state: touch

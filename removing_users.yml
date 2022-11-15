@@ -1,0 +1,16 @@
+---
+- name: removing_users
+  become: true
+  hosts: all
+  tasks:
+    - name: list of users removing
+      user: name='{{ item }}' state=absent
+      with_items:
+        - raj
+        - lakshmi
+        - siva
+        - harismaran
+        - Harismaran
+        - Anju
+      ignore_errors: yes
+

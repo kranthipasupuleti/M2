@@ -1,0 +1,8 @@
+---
+- name: user creation
+  hosts: all
+  become: true
+  tasks:
+    - name: user creation
+      user:
+        name: harismaran

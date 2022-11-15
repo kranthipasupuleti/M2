@@ -1,0 +1,9 @@
+---
+- name: Removing Multiple packages
+  become: true
+  hosts: server
+  tasks:
+    - name: Remove_Pkgs
+      yum:
+        name: ['git*', 'docker*', 'httpd*', 'tree*', 'telnet*', 'mysql*', 'wget*']
+        state: absent

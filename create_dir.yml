@@ -1,0 +1,14 @@
+---
+- name: Making Directory
+  hosts: all
+  become: true
+  tasks:
+    - name: Directory creation
+      file:
+        path: /home/admin/Love55
+        state: directory
+
+    - name: creating_file
+      file: 
+        path: /home/admin/test.txt
+        state: touch 

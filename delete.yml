@@ -1,0 +1,14 @@
+---
+- name: deleting directory and file
+  hosts: all
+  become: true
+  tasks:
+    - name: deleting_directory
+      file:
+        path: /home/admin/Love55
+        state: absent
+
+    - name: deleting_file
+      file: 
+        path: /home/admin/test.txt
+        state: absent

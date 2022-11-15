@@ -1,0 +1,20 @@
+---
+- name: file removing_httpdstoping_uninstalling
+  hosts: all
+  become: true
+  tasks:
+    - name: pkg_httpd_stoping
+      service:
+        name: httpd
+        state: stopped
+      ignore_errors: yes
+
+    - name: http_unsinstalling
+      yum: 
+        name: httpd*
+        state: absent
+
+    - name: removing file_index.html
+      file:
+        path: /var/www/html/index.html
+        state: absent

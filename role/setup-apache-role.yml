@@ -1,0 +1,6 @@
+---
+- name: playing book by roles
+  become: true
+  hosts: all
+  roles:
+  - setup-apache-role

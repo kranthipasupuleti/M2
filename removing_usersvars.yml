@@ -1,0 +1,11 @@
+---
+- name: vars_user_creation
+  hosts: all
+  become: true
+  vars_files:
+    - varsfile.yml
+  tasks:
+    - name: user_creation by file
+      user:
+        name: "{{user}}"
+        state: absent

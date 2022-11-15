@@ -1,0 +1,14 @@
+---
+- name: Installing Multiple packages
+  become: true
+  hosts: server
+  tasks:
+    - name: Multiple_Pkg
+      yum:
+        name: ['git', 'docker', 'httpd', 'tree', 'telnet', 'mysql', 'wget']
+        state: present
+
+    - name: Multiple_Pkg
+      yum:
+        name: ['git', 'docker', 'httpd', 'tree', 'telnet', 'mysql', 'wget']
+        state: latest
